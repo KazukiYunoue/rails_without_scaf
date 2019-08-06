@@ -1,0 +1,14 @@
+<h1>Entries List</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th></th>
+  </tr>
+  <% @entries.each do |entry| %>
+  <tr>
+    <td><%= entry.title %></td>
+    <td><%= entry.body %></td>
+  </tr>
+  <% end %>
+</table>
