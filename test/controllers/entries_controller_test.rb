@@ -9,4 +9,9 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     get entries_url
     assert_response :success
   end
+
+  test 'should show entry' do
+    get entry_url(@entry)
+    assert_response :success
+  end
 end
