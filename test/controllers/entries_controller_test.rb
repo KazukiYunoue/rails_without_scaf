@@ -15,6 +15,11 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get new' do
+    get new_entry_url
+    assert_response :success
+  end
+
   test 'should create entry' do
     assert_difference('Entry.count') do
       post entries_url, params: { entry: { body: @entry.body, title: @entry.title } }
