@@ -14,4 +14,12 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     get entry_url(@entry)
     assert_response :success
   end
+
+  test 'should create entry' do
+    assert_difference('Entry.count') do
+      post entries_url, params: { entry: { body: @entry.body, title: @entry.title } }
+    end
+
+    assert_redirected_to entry_url(Entry.last)
+  end
 end
