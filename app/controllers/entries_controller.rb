@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_entry, only: %i[show edit update destroy]
 
   def index
     @entries = Entry.all
@@ -39,9 +39,11 @@ class EntriesController < ApplicationController
   end
 
   private
+
   def set_entry
     @entry = Entry.find(params[:id])
   end
+
   def entry_params
     params.require(:entry).permit(:title, :body)
   end
