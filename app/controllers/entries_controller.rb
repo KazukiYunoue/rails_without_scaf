@@ -34,6 +34,8 @@ class EntriesController < ApplicationController
   end
 
   def destroy
+    @entry.destroy
+    redirect_to entries_url, notice: 'Entry was successfully destroyed.'
   end
 
   private

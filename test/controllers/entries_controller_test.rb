@@ -37,4 +37,12 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     patch entry_url(@entry), params: {entry: { title: @entry.title, body: @entry.body } }
     assert_redirected_to entry_url(@entry)
   end
+
+  test 'should destroy entry' do
+    assert_difference('Entry.count', -1) do
+      delete entry_url(@entry)
+    end
+
+    assert_redirected_to entries_url
+  end
 end
