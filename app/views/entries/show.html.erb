@@ -1,0 +1,12 @@
+<p><%= notice %></p>
+<h1>Entry</h1>
+<div>
+  <h3>Title</h3>
+  <p><%= @entry.title %></p>
+</div>
+<div>
+  <h3>Body</h3>
+  <p><%= @entry.body %></p>
+</div>
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
