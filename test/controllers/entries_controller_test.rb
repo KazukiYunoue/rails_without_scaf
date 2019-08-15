@@ -32,4 +32,9 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     get edit_entry_url(@entry)
     assert_response :success
   end
+
+  test 'should update entry' do
+    patch entry_url(@entry), params: {entry: { title: @entry.title, body: @entry.body } }
+    assert_redirected_to entry_url(@entry)
+  end
 end
