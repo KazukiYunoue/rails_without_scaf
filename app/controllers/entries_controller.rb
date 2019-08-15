@@ -26,6 +26,11 @@ class EntriesController < ApplicationController
   end
 
   def update
+    if @entry.update(entry_params)
+      redirect_to @entry, notice: 'Entry was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
