@@ -27,4 +27,9 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to entry_url(Entry.last)
   end
+
+  test 'should get edit' do
+    get edit_entry_url(@entry)
+    assert_response :success
+  end
 end
