@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;;
+}
+
+.container {
+  width: 950px;
+  margin: auto;
+}
+
+.alert {
+  background-color: lightgreen;
+  padding: 10px;
+}
+
+.alert-success {
+  color: green;
+}
