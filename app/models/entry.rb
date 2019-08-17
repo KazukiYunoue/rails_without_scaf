@@ -1,4 +1,3 @@
 class Entry < ActiveRecord::Base
-  # TODO: add validation with presence
-  # TODO: add validation with length
+  validates :title, presence: true, length: { maximum: 140 }
 end

@@ -6,6 +6,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;;
 }
 
+#error_explanation {
+  padding: 10px;
+}
+
 .container {
   width: 950px;
   margin: auto;
@@ -17,5 +21,13 @@ body {
 }
 
 .alert-success {
-  color: green;
+  color: #28A745;
+}
+
+.bg-light {
+  background-color: #F8F9FA;
+}
+
+.text-danger {
+  color: #DC3545;
 }
