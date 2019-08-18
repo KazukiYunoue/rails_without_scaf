@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_08_18_055630) do
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body"
     t.string "status"
-    t.bigint "entry_id", null: false
+    t.bigint "entry_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["entry_id"], name: "index_comments_on_entry_id"
@@ -28,5 +28,4 @@ ActiveRecord::Schema.define(version: 2019_08_18_055630) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "comments", "entries"
 end
