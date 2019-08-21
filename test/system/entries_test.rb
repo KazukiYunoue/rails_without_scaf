@@ -6,12 +6,12 @@ class EntriesTest < ApplicationSystemTestCase
   end
 
   test 'visiting the index' do
-    visit entries_url
+    visit entries_url # TODO: change url
     assert_selector 'h1', text: 'Entries'
   end
 
   test 'creating a Entry' do
-    visit entries_url
+    visit entries_url # TODO: change url
     click_on 'New Entry'
 
     fill_in 'Body', with: @entry.body
@@ -23,7 +23,7 @@ class EntriesTest < ApplicationSystemTestCase
   end
 
   test 'updating a Entry' do
-    visit entries_url
+    visit entries_url # TODO: change url
     click_on 'Edit', match: :first
 
     fill_in 'Body', with: @entry.body
@@ -35,7 +35,7 @@ class EntriesTest < ApplicationSystemTestCase
   end
 
   test 'destroying a Entry' do
-    visit entries_url
+    visit entries_url # TODO: change url
     page.accept_confirm do
       click_on 'Destroy', match: :first
     end
