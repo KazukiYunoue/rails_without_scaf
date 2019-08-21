@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[show edit update destroy]
+  # TODO: add before_action set_blog
 
   def index
     @entries = Entry.all
@@ -51,6 +52,7 @@ class EntriesController < ApplicationController
 
   private
 
+  # TODO: remove set_entry
   def set_entry
     @entry = Entry.find(params[:id])
   end
