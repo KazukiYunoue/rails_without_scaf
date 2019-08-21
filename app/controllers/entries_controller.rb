@@ -52,7 +52,6 @@ class EntriesController < ApplicationController
 
   private
 
-  # TODO: remove set_entry
   def set_entry
     @entry = Entry.find(params[:id])
   end
