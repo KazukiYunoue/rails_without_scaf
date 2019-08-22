@@ -1,1 +1,20 @@
-<%# TODO: listing blogs %>
+<% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>
+<h1>Blogs List</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+  </tr>
+  <% @blogs.each do |blog| %>
+    <tr>
+      <td><%= blog.title %></td>
+      <td><%= link_to 'Show', blog_entries_path(blog) %></td>
+      <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+      <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Blog', new_blog_path %>

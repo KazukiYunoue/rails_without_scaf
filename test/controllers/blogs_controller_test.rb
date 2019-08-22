@@ -20,7 +20,7 @@ class BlogsControllerTest < ActionDispatch::IntegrationTest
       post blogs_url, params: { blog: { title: @blog.title } }
     end
 
-    assert_redirected_to blog_url(Blog.last)
+    assert_redirected_to blog_entries_url(Blog.last)
   end
 
   test 'should get edit' do
@@ -31,7 +31,7 @@ class BlogsControllerTest < ActionDispatch::IntegrationTest
   test 'should update blog' do
     patch blog_url(@blog), params: {blog: { title: @blog.title } }
 
-    assert_redirected_to blog_url(@blog)
+    assert_redirected_to blog_entries_url(@blog)
   end
 
   test 'should destroy blog' do
