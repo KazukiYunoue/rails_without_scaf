@@ -2,16 +2,18 @@ require 'application_system_test_case'
 
 class EntriesTest < ApplicationSystemTestCase
   setup do
+    @blog = blogs(:one)
     @entry = entries(:one)
   end
 
   test 'visiting the index' do
-    visit entries_url # TODO: change url
+    visit blogs_url
+    click_on 'Show', match: :first
     assert_selector 'h1', text: 'Entries'
   end
 
   test 'creating a Entry' do
-    visit entries_url # TODO: change url
+    visit blog_entries_url(@blog)
     click_on 'New Entry'
 
     fill_in 'Body', with: @entry.body
@@ -23,7 +25,7 @@ class EntriesTest < ApplicationSystemTestCase
   end
 
   test 'updating a Entry' do
-    visit entries_url # TODO: change url
+    visit blog_entries_url(@blog)
     click_on 'Edit', match: :first
 
     fill_in 'Body', with: @entry.body
@@ -35,7 +37,7 @@ class EntriesTest < ApplicationSystemTestCase
   end
 
   test 'destroying a Entry' do
-    visit entries_url # TODO: change url
+    visit blog_entries_url(@blog)
     page.accept_confirm do
       click_on 'Destroy', match: :first
     end
