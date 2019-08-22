@@ -3,7 +3,8 @@ class EntriesController < ApplicationController
   # TODO: add before_action set_blog
 
   def index
-    @entries = Entry.all
+    @blog = Blog.find(params[:blog_id])
+    @entries = @blog.entries
   end
 
   def show
