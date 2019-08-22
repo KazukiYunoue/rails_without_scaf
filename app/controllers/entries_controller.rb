@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[show edit update destroy]
   before_action :set_blog_by_params, only: %i[index new create]
-  before_action :set_blog_by_association, only: %i[show edit destroy]
+  before_action :set_blog_by_association, only: %i[show edit update destroy]
 
   def index
     @entries = @blog.entries
