@@ -9,7 +9,7 @@ class EntriesTest < ApplicationSystemTestCase
   test 'visiting the index' do
     visit blogs_url
     click_on 'Show', match: :first
-    assert_selector 'h1', text: 'Entries'
+    assert_selector 'h2', text: 'Listing entries'
   end
 
   test 'creating a Entry' do
@@ -26,7 +26,7 @@ class EntriesTest < ApplicationSystemTestCase
 
   test 'updating a Entry' do
     visit blog_entries_url(@blog)
-    click_on 'Edit', match: :first
+    click_on "edit_entry_#{@entry.id}"
 
     fill_in 'Body', with: @entry.body
     fill_in 'Title', with: @entry.title
