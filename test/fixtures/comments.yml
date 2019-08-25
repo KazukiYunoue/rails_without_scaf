@@ -2,10 +2,10 @@
 
 one:
   body: MyText
-  status: MyString
+  status: unapproved
   entry: one
 
 two:
   body: MyText
-  status: MyString
+  status: unapproved
   entry: two
