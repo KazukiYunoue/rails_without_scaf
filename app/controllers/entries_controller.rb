@@ -8,6 +8,8 @@ class EntriesController < ApplicationController
   end
 
   def show
+    @comments = @entry.comments
+    @comment = Comment.new
   end
 
   def new
