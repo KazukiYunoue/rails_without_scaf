@@ -1,19 +1,23 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[show edit update destroy]
+  before_action :set_blog_by_params, only: %i[index new create]
+  before_action :set_blog_by_association, only: %i[show edit update destroy]
 
   def index
-    @entries = Entry.all
+    @entries = @blog.entries
   end
 
   def show
+    @comments = @entry.comments
+    @comment = Comment.new
   end
 
   def new
-    @entry = Entry.new
+    @entry = @blog.entries.build
   end
 
   def create
-    @entry = Entry.new(entry_params)
+    @entry = @blog.entries.build(entry_params)
 
     respond_to do |format|
       if @entry.save
@@ -44,7 +48,7 @@ class EntriesController < ApplicationController
   def destroy
     @entry.destroy
     respond_to do |format|
-      format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to blog_entries_path(@blog), notice: 'Entry was successfully destroyed.' }
       format.json  { head :no_content }
     end
   end
@@ -57,5 +61,13 @@ class EntriesController < ApplicationController
 
   def entry_params
     params.require(:entry).permit(:title, :body)
+  end
+
+  def set_blog_by_params
+    @blog = Blog.find(params[:blog_id])
+  end
+
+  def set_blog_by_association
+    @blog = @entry.blog
   end
 end
