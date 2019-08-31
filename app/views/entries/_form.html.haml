@@ -1,4 +1,4 @@
-= form_with(model: entry, url: url, local: true) do |form|
+= form_with(model: entry, url: url, local: true, class: 'form') do |form|
   - if entry.errors.any?
     #error_explanation.bg-light.text-danger
       %h2
@@ -7,11 +7,11 @@
       %ul
         - entry.errors.full_messages.each do |message|
           %li= message
-  %div
-    = form.label :title
+  .form-item
+    .form-label= form.label :title
     = form.text_field :title
-  %div
-    = form.label :body
+  .form-item
+    .form-label= form.label :body
     = form.text_area :body
-  %div
+  .form-item.is-centralized
     = form.submit

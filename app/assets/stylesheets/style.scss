@@ -71,6 +71,10 @@ $light-color: #F8F9FA;
       }
     }
   }
+  textarea {
+    width: 100%;
+    font-size: 1.5em;
+  }
 }
 
 #error_explanation {
