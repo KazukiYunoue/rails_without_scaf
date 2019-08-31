@@ -1,4 +1,5 @@
-%h1
-  Edit entry: #{@blog.title}
+%header.header.header-title
+  %h1= @blog.title
+  %h2 Edit entry
 = render 'form', blog: @blog, entry: @entry, url: @entry
-= link_to 'Back', blog_entries_path(@blog)
+.is-centralized= link_to 'Back', blog_entries_path(@blog)
