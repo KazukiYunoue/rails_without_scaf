@@ -2,11 +2,10 @@
   .alert.alert-success= notice
 %header.header.header-title
   %h1 Blogs
-.blog-new= link_to 'New Blog', new_blog_path
+.blogs-new= link_to 'New Blog', new_blog_path
 %section
   - @blogs.each do |blog|
-    .blog
-      %h2.blog-title.blog-title-large= link_to blog.title, blog_entries_path(blog)
-      .blog-controller-icon= link_to 'Edit', edit_blog_path(blog)
-      .blog-controller-icon= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
-
+    .blogs
+      %h2.blogs-title.blogs-title-large= link_to blog.title, blog_entries_path(blog)
+      .blogs-controller-icon= link_to 'Edit', edit_blog_path(blog)
+      .blogs-controller-icon= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }

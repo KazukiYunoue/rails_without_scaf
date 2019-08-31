@@ -5,10 +5,10 @@
   .is-centralized
     = link_to 'Edit', edit_blog_path(@blog), id: "edit_blog_#{@blog.id}"
     | #{link_to 'Back', blogs_path}
-.entry-new= link_to 'New Entry', new_blog_entry_path(@blog)
+.entries-new= link_to 'New Entry', new_blog_entry_path(@blog)
 %section
   - @entries.each do |entry|
-    .entry
-      %h2.entry-title= link_to entry.title, entry
-      .entry-controller-icon= link_to 'Edit', edit_entry_path(entry), id: "edit_entry_#{entry.id}"
-      .entry-controller-icon= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
+    .entries
+      %h2.entries-title= link_to entry.title, entry
+      .entries-controller-icon= link_to 'Edit', edit_entry_path(entry), id: "edit_entry_#{entry.id}"
+      .entries-controller-icon= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }

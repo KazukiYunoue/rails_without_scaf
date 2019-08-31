@@ -25,25 +25,38 @@ $light-color: #F8F9FA;
   }
 }
 
-.blog, .entry {
+.blogs, .entries, .comments {
   border-left: #666666 solid 8px;
   margin-bottom: 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 0px 10px;
   &-new {
     padding: 10px;
     text-align: right;
   }
   &-title {
-    padding: 0px 10px;
     margin-right: auto;
     &-large {
       font-size: 2.0em;
     }
   }
+  &-body {
+    margin-right: auto;
+  }
   &-controller-icon {
     padding: 0px 10px;
+  }
+}
+
+.entry {
+  &-title {
+    padding-bottom: 20px;
+  }
+  &-body {
+    font-size: 1.2em;
+    padding-bottom: 20px;
   }
 }
 
@@ -71,9 +84,11 @@ $light-color: #F8F9FA;
       }
     }
   }
-  textarea {
+  .textarea {
     width: 100%;
-    font-size: 1.5em;
+    &-large {
+      font-size: 1.5em;
+    }
   }
 }
 

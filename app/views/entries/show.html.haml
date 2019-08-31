@@ -1,30 +1,24 @@
 - if notice
   .alert.alert-success= notice
-%h1= @blog.title
-%div
-  %h3 Title
-  %p= @entry.title
-%div
-  %h3 Body
-  %p= @entry.body
-= link_to 'Edit', edit_entry_path(@entry)
-|
-= link_to 'Back', blog_entries_path(@blog)
-%h2 Listing comments
-%table
-  %tr
-    %th Body
-    %th
-    %th
+%header.header.header-title
+  %h1= @blog.title
+.entry
+  .entry-title
+    %h2= @entry.title
+    = link_to 'Edit', edit_entry_path(@entry)
+    |
+    = link_to 'Back', blog_entries_path(@blog)
+  .entry-body
+    = simple_format @entry.body
+%h3.is-centralized Comments
+%section
   - @comments.each do |comment|
-    %tr
-      %td
-        = comment.status == 'approved' ? comment.body : '(承認待ち)'
-      %td= link_to 'Approve', approve_comment_path(comment), method: :patch if comment.status == 'unapproved'
-      %td= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
-= form_with(model: @comment, url: [@entry, @comment], local: true) do |form|
-  %div
-    = form.label :body
-    = form.text_area :body
-  %div
+    .comments
+      .comments-body= simple_format comment.status == 'approved' ? comment.body : '(承認待ち)'
+      .comments-controller-icon= link_to 'Approve', approve_comment_path(comment), method: :patch if comment.status == 'unapproved'
+      .comments-controller-icon= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
+= form_with(model: @comment, url: [@entry, @comment], local: true, class: 'form') do |form|
+  .form-item
+    = form.text_area :body, placeholder: 'New comment', class: 'textarea'
+  .form-item.is-centralized
     = form.submit 'Save'
