@@ -1,15 +1,17 @@
 // Base
+$dark-087: rgba(0,23,39,0.87);
+$dark-054: rgba(0,23,39,0.54);
+$dark-026: rgba(0,23,39,0.26);
+$dark-012: rgba(0,23,39,0.12);
+
 body {
+  color: $dark-087;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;;
 }
 
 a {
-  color: #2E2F30;
+  color: $dark-087;
 }
-
-$success-color: #28A745;
-$danger-color: #DC3545;
-$light-color: #F8F9FA;
 
 // Layout
 .container {
@@ -25,8 +27,8 @@ $light-color: #F8F9FA;
   }
 }
 
-.blogs, .entries, .comments {
-  border-left: #666666 solid 8px;
+.listed-item {
+  border-left: $dark-012 solid 8px;
   margin-bottom: 20px;
   display: flex;
   justify-content: flex-end;
@@ -39,14 +41,14 @@ $light-color: #F8F9FA;
   &-title {
     margin-right: auto;
     &-large {
-      font-size: 2.0em;
+      font-size: 1.8em;
     }
   }
   &-body {
     margin-right: auto;
   }
   &-controller-icon {
-    padding: 0px 10px;
+    padding-left: 10px;
   }
 }
 
@@ -55,7 +57,8 @@ $light-color: #F8F9FA;
     padding-bottom: 20px;
   }
   &-body {
-    font-size: 1.2em;
+    font-size: 1.3em;
+    line-height: 1.3em;
     padding-bottom: 20px;
   }
 }
@@ -72,48 +75,48 @@ $light-color: #F8F9FA;
     &[type='text'] {
       font-size: 2.0em;
       width: 100%;
+      box-sizing: border-box;
+      padding: 5px;
     }
     &[type='submit'] {
       cursor: pointer;
       padding: 10px 25px;
       border-radius: 10px;
-      background-color: #DADADA;
+      background-color: $dark-012;
       font-weight: bold;
       &:hover {
-        background-color: #BBBBBB;
+        background-color: $dark-054;
       }
     }
   }
   .textarea {
     width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
     &-large {
-      font-size: 1.5em;
+      font-size: 1.3em;
+      line-height: 1.3em;
     }
   }
 }
 
-#error_explanation {
+.error_explanation {
+  width: 100%;
   padding: 10px;
+  margin-bottom: 20px;
+  background-color: $dark-012;
+  color: $dark-087;
 }
 
 .alert {
-  background-color: lightgreen;
+  background-color: $dark-012;
   padding: 10px;
-}
-
-.alert-success {
-  color: $success-color;
+  &-success {
+//    color: $dark-087;
+  }
 }
 
 // State
-.bg-light {
-  background-color: $light-color;
-}
-
-.text-danger {
-  color: $danger-color;
-}
-
 .is-centralized {
   text-align: center;
 }

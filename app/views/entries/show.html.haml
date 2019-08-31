@@ -1,5 +1,5 @@
 - if notice
-  .alert.alert-success= notice
+  .alert= notice
 %header.header.header-title
   %h1= @blog.title
 .entry
@@ -13,10 +13,10 @@
 %h3.is-centralized Comments
 %section
   - @comments.each do |comment|
-    .comments
-      .comments-body= simple_format comment.status == 'approved' ? comment.body : '(承認待ち)'
-      .comments-controller-icon= link_to 'Approve', approve_comment_path(comment), method: :patch if comment.status == 'unapproved'
-      .comments-controller-icon= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
+    .listed-item
+      .listed-item-body= simple_format comment.status == 'approved' ? comment.body : '(承認待ち)'
+      .listed-item-controller-icon= link_to 'Approve', approve_comment_path(comment), method: :patch if comment.status == 'unapproved'
+      .listed-item-controller-icon= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }
 = form_with(model: @comment, url: [@entry, @comment], local: true, class: 'form') do |form|
   .form-item
     = form.text_area :body, placeholder: 'New comment', class: 'textarea'

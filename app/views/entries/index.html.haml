@@ -1,14 +1,14 @@
 - if notice
-  .alert.alert-success= notice
+  .alert= notice
 %header.header.header-title
   %h1= @blog.title
   .is-centralized
     = link_to 'Edit', edit_blog_path(@blog), id: "edit_blog_#{@blog.id}"
     | #{link_to 'Back', blogs_path}
-.entries-new= link_to 'New Entry', new_blog_entry_path(@blog)
+.listed-item-new= link_to 'New Entry', new_blog_entry_path(@blog)
 %section
   - @entries.each do |entry|
-    .entries
-      %h2.entries-title= link_to entry.title, entry
-      .entries-controller-icon= link_to 'Edit', edit_entry_path(entry), id: "edit_entry_#{entry.id}"
-      .entries-controller-icon= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
+    .listed-item
+      %h2.listed-item-title= link_to entry.title, entry
+      .listed-item-controller-icon= link_to 'Edit', edit_entry_path(entry), id: "edit_entry_#{entry.id}"
+      .listed-item-controller-icon= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
