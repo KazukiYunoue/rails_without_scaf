@@ -45,6 +45,32 @@ $light-color: #F8F9FA;
   }
 }
 
+.form {
+  &-label {
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+  &-item{
+    padding-bottom: 20px;
+  }
+  & input {
+    &[type='text'] {
+      font-size: 2.0em;
+      width: 100%;
+    }
+    &[type='submit'] {
+      cursor: pointer;
+      padding: 10px 25px;
+      border-radius: 10px;
+      background-color: #DADADA;
+      font-weight: bold;
+      &:hover {
+        background-color: #BBBBBB;
+      }
+    }
+  }
+}
+
 #error_explanation {
   padding: 10px;
 }
@@ -65,4 +91,8 @@ $light-color: #F8F9FA;
 
 .text-danger {
   color: $danger-color;
+}
+
+.is-centralized {
+  text-align: center;
 }
