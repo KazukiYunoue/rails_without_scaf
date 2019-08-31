@@ -1,8 +1,8 @@
 one:
-  title: "test 1"
-  body: "body 1"
+  title: Entry 1
+  body: Body 1
   blog: :one
 two:
-  title: "test 2"
-  body: "body 2"
+  title: Entry 2
+  body: Body 2
   blog: :two

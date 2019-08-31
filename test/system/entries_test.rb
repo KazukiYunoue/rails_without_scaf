@@ -8,8 +8,8 @@ class EntriesTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit blogs_url
-    click_on @blog.title, match: :first
-    assert_selector 'h2', text: 'Listing entries'
+    click_on @blog.title
+    assert_selector 'h2', text: @entry.title
   end
 
   test 'creating a Entry' do
