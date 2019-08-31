@@ -6,7 +6,7 @@
 %section
   - @blogs.each do |blog|
     .blog
-      %h2.blog-title= link_to blog.title, blog_entries_path(blog)
+      %h2.blog-title.blog-title-large= link_to blog.title, blog_entries_path(blog)
       .blog-controller-icon= link_to 'Edit', edit_blog_path(blog)
       .blog-controller-icon= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
 
