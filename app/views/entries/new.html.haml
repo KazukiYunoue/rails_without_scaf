@@ -1,0 +1,4 @@
+%h1
+  New entry: #{@blog.title}
+= render 'form', blog: @blog, entry: @entry, url: [@blog, @entry]
+= link_to 'Back', blog_entries_path(@blog)
