@@ -1,0 +1,17 @@
+= form_with(model: entry, url: url, local: true, class: 'form') do |form|
+  - if entry.errors.any?
+    .error_explanation
+      %h2
+        = pluralize(entry.errors.count, "error")
+        prohibited this entry from being saved:
+      %ul
+        - entry.errors.full_messages.each do |message|
+          %li= message
+  .form-item
+    .form-label= form.label :title
+    = form.text_field :title
+  .form-item
+    .form-label= form.label :body
+    = form.text_area :body, rows: 30, class: 'textarea textarea-large'
+  .form-item.is-centralized
+    = form.submit

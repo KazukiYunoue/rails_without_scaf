@@ -1,0 +1,11 @@
+- if notice
+  .alert= notice
+%header.header.header-title
+  %h1 Blogs
+.listed-item-new= link_to 'New Blog', new_blog_path
+%section
+  - @blogs.each do |blog|
+    .listed-item
+      %h2.listed-item-title.listed-item-title-large= link_to blog.title, blog_entries_path(blog)
+      .listed-item-controller-icon= link_to 'Edit', edit_blog_path(blog)
+      .listed-item-controller-icon= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }

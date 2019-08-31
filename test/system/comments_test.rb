@@ -8,13 +8,13 @@ class CommentsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit entry_url(@entry)
-    assert_selector 'h2', text: 'Listing comments'
+    assert_selector 'h3', text: 'Comments'
     assert_no_text 'MyComment'
   end
 
   test 'creating a Comment' do
     visit entry_url(@entry)
-    fill_in 'Body', with: @comment.body
+    fill_in 'comment_body', with: @comment.body
     click_on 'Save'
 
     assert_text 'Comment was successfully created'
