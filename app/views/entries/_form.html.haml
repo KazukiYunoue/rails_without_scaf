@@ -1,0 +1,17 @@
+= form_with(model: entry, url: url, local: true) do |form|
+  - if entry.errors.any?
+    #error_explanation.bg-light.text-danger
+      %h2
+        = pluralize(entry.errors.count, "error")
+        prohibited this entry from being saved:
+      %ul
+        - entry.errors.full_messages.each do |message|
+          %li= message
+  %div
+    = form.label :title
+    = form.text_field :title
+  %div
+    = form.label :body
+    = form.text_area :body
+  %div
+    = form.submit

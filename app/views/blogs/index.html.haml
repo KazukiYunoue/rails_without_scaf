@@ -1,0 +1,14 @@
+- if notice
+  .alert.alert-success= notice
+%h1 Blogs List
+%table
+  %tr
+    %th Title
+    %th
+  - @blogs.each do |blog|
+    %tr
+      %td= blog.title
+      %td= link_to 'Show', blog_entries_path(blog)
+      %td= link_to 'Edit', edit_blog_path(blog)
+      %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'New Blog', new_blog_path
