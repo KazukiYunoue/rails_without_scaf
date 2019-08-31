@@ -1,22 +1,52 @@
-$success-color: #28A745;
-$danger-color: #DC3545;
-$light-color: #F8F9FA;
-
-* {
-  box-sizing: border-box;
-}
-
+// Base
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;;
 }
 
-#error_explanation {
-  padding: 10px;
+a {
+  color: #2E2F30;
 }
 
+$success-color: #28A745;
+$danger-color: #DC3545;
+$light-color: #F8F9FA;
+
+// Layout
 .container {
-  width: 950px;
+  width: 750px;
   margin: auto;
+}
+
+// Module
+.header {
+  padding: 50px 0px;
+  &-title {
+    text-align: center;
+  }
+}
+
+.blog {
+  border-left: #666666 solid 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  &-new {
+    padding: 10px;
+    text-align: right;
+  }
+  &-title {
+    padding: 0px 10px;
+    margin-right: auto;
+    font-size: 2.0em;
+  }
+  &-controller-icon {
+    padding: 0px 10px;
+  }
+}
+
+#error_explanation {
+  padding: 10px;
 }
 
 .alert {
@@ -28,6 +58,7 @@ body {
   color: $success-color;
 }
 
+// State
 .bg-light {
   background-color: $light-color;
 }
