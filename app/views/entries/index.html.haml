@@ -10,5 +10,6 @@
   - @entries.each do |entry|
     .listed-item
       %h2.listed-item-title= link_to entry.title, entry
-      .listed-item-controller-icon= link_to 'Edit', edit_entry_path(entry), id: "edit_entry_#{entry.id}"
-      .listed-item-controller-icon= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
+      .listed-item-controllers
+        .listed-item-controller-icon= link_to 'Edit', edit_entry_path(entry), id: "edit_entry_#{entry.id}"
+        .listed-item-controller-icon= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }

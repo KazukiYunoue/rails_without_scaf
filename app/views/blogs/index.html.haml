@@ -7,5 +7,6 @@
   - @blogs.each do |blog|
     .listed-item
       %h2.listed-item-title.listed-item-title-large= link_to blog.title, blog_entries_path(blog)
-      .listed-item-controller-icon= link_to 'Edit', edit_blog_path(blog)
-      .listed-item-controller-icon= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+      .listed-item-controllers
+        .listed-item-controller-icon= link_to 'Edit', edit_blog_path(blog)
+        .listed-item-controller-icon= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }

@@ -4,9 +4,26 @@ $dark-054: rgba(0,23,39,0.54);
 $dark-026: rgba(0,23,39,0.26);
 $dark-012: rgba(0,23,39,0.12);
 
+$breakpoints: (
+  s: "only screen and (max-width: 575px)",
+  m: "only screen and (max-width: 767px)",
+  l: "only screen and (max-width: 991px)",
+  xl: "only screen and (max-width: 1199px)",
+);
+
+@mixin media($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
 body {
   color: $dark-087;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  line-height: 1.6;
+  font-size: 1.2rem;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 a {
@@ -15,7 +32,8 @@ a {
 
 // Layout
 .container {
-  width: 750px;
+  width: 90%;
+  max-width: 750px;
   margin: auto;
 }
 
@@ -33,6 +51,11 @@ a {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  @include media(s) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
   padding: 0px 10px;
   &-new {
     padding: 10px;
@@ -41,11 +64,14 @@ a {
   &-title {
     margin-right: auto;
     &-large {
-      font-size: 1.8em;
+      font-size: 1.8rem;
     }
   }
   &-body {
     margin-right: auto;
+  }
+  &-controllers {
+    display: flex;
   }
   &-controller-icon {
     padding-left: 10px;
@@ -57,8 +83,6 @@ a {
     padding-bottom: 20px;
   }
   &-body {
-    font-size: 1.3em;
-    line-height: 1.3em;
     padding-bottom: 20px;
   }
 }
@@ -73,7 +97,6 @@ a {
   }
   & input {
     &[type='text'] {
-      font-size: 2.0em;
       width: 100%;
       box-sizing: border-box;
       padding: 5px;
@@ -94,8 +117,7 @@ a {
     box-sizing: border-box;
     padding: 10px;
     &-large {
-      font-size: 1.3em;
-      line-height: 1.3em;
+      line-height: 1.6;
     }
   }
 }
@@ -111,9 +133,6 @@ a {
 .alert {
   background-color: $dark-012;
   padding: 10px;
-  &-success {
-//    color: $dark-087;
-  }
 }
 
 // State
