@@ -45,6 +45,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'brakeman'
 end
 
 group :test do
