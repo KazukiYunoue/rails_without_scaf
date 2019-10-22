@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @entry.comments.build(comment_params)
 
-    if @entry.save
+    if @comment.save
       redirect_to @entry, notice: 'Comment was successfully created.'
     else
       render :show, location: @entry
