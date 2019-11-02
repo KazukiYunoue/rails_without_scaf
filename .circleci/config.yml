@@ -20,6 +20,7 @@ jobs:
     steps:
       - checkout
       - run: bundle install
+      - run: yarn install
       - run: bundle exec rails db:create db:migrate RAILS_ENV=test
       - run: bundle exec rails test
       - run: bundle exec rails test:system
