@@ -46,6 +46,7 @@ group :development do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'brakeman'
+  gem 'letter_opener'
 end
 
 group :test do

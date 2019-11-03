@@ -20,6 +20,15 @@ class CommentsTest < ApplicationSystemTestCase
     assert_text 'Comment was successfully created'
   end
 
+  test 'sending email to ask approval' do
+    visit entry_url(@entry)
+    fill_in 'comment_body', with: @comment.body
+
+    assert_emails 1 do
+      click_on 'Save'
+    end
+  end
+
   test 'destroying a Comment' do
     visit entry_url(@entry)
     page.accept_confirm do
