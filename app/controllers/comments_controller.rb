@@ -7,6 +7,9 @@ class CommentsController < ApplicationController
     @comment = @entry.comments.build(comment_params)
 
     if @comment.save
+      CommentMailer.with(blog: @entry.blog,
+                         entry: @entry,
+                         comment: @comment).ask_approval.deliver_later
       redirect_to @entry, notice: 'Comment was successfully created.'
     else
       render :show, location: @entry
