@@ -1,26 +1,77 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
 version: 2
+references:
+  default_docker_ruby_executor: &default_docker_ruby_executor
+    image: circleci/ruby:2.6.3-node-browsers
+    environment:
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      RAILS_ENV: test
+  mysql: &mysql
+    image: circleci/mysql:5.7.28
+
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/ruby:2.6.3-node-browsers
-      - image: circleci/mysql:5.7.27
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
+      - *default_docker_ruby_executor
 
     steps:
       - checkout
-      - run: bundle install
-      - run: yarn install
-      - run: bundle exec rails db:create db:migrate RAILS_ENV=test
+      - restore_cache:
+          keys:
+            - rails_without_scaf-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails_without_scaf-bundle-v2-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - save_cache:
+          key: rails_without_scaf-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - restore_cache:
+          keys:
+            - rails_without_scaf-yarn-{{ checksum "yarn.lock" }}
+            - rails_without_scaf-yarn-
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+      - save_cache:
+          key: rails_without_scaf-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+  test:
+    docker:
+      - *default_docker_ruby_executor
+      - *mysql
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - rails_without_scaf-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails_without_scaf-bundle-v2-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - restore_cache:
+          keys:
+            - rails_without_scaf-yarn-{{ checksum "yarn.lock" }}
+            - rails_without_scaf-yarn-
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run: bundle exec rails db:create db:schema:load --trace
       - run: bundle exec rails test
       - run: bundle exec rails test:system
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
