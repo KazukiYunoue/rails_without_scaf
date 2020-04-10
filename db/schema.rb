@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_045521) do
+ActiveRecord::Schema.define(version: 2020_02_19_235016) do
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 2019_08_28_045521) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "blog_id"
     t.index ["blog_id"], name: "index_entries_on_blog_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
