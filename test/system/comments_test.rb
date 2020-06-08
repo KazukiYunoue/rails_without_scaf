@@ -1,6 +1,11 @@
 require 'application_system_test_case'
 
 class CommentsTest < ApplicationSystemTestCase
+  # TODO: it might not be best solution to solve system test error
+  # if without include sentence, it will be happened:
+  # NoMethodError: undefined method `assert_emails'
+  include ActionMailer::TestHelper
+
   setup do
     @entry = entries(:one)
     @comment = comments(:one)
